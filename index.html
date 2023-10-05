@@ -1,0 +1,161 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>Programming problems</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+		<style>
+			h1, h2, p, .difficulty, div {
+				font-family: Helvetica, sans-serif;
+			}
+
+			#container > div {
+				margin: 20px 0;
+				border: 1px solid #ddd;
+				padding: 15px 30px;
+				border-radius: 10px;
+			}
+
+			#container {
+				width: 70%;
+				margin: auto;
+			}
+
+			h1, a {
+				display: inline;
+				color: black !important;
+			}
+
+			h1, h2, p {
+				margin: 5px 0 5px 0;
+			}
+
+			.difficulty {
+				padding: 5px 10px;
+				border-radius: 5px;
+				color: white;
+				font-weight: bold;
+				font-size: 1em;
+				margin-left: 10px;
+			}
+
+			code {
+				font-family: 'Courier New', Courier, monospace !important;
+				font-size: 0.9em;
+				tab-size: 4;
+			}
+
+			.hljs-comment {
+				color: #3bb05e !important;
+			}
+
+			#clickToShow {
+				cursor: pointer;
+				color: blue;
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script>
+			const container = document.querySelector("#container");
+
+			const problems = [
+				{
+difficulty: "easy",
+link: "https://codeforces.com/problemset/problem/4/A",
+title: "Watermelon",
+content: `One hot summer day Pete and his friend Billy decided to buy a watermelon. They chose the biggest and the ripest one, in their opinion. After that the watermelon was weighed, and the scales showed w kilos. They rushed home, dying of thirst, and decided to divide the berry, however they faced a hard problem.<br><br>Pete and Billy are great fans of even numbers, that's why they want to divide the watermelon in such a way that each of the two parts weighs even number of kilos, at the same time it is not obligatory that the parts are equal. The boys are extremely tired and want to start their meal as soon as possible, that's why you should help them and find out, if they can divide the watermelon in the way they want. For sure, each of them should get a part of positive weight.`,
+input: `The first (and the only) input line contains integer number w (1 ≤ w ≤ 100) — the weight of the watermelon bought by the boys.`,
+output: `Print YES, if the boys can divide the watermelon into two parts, each of them weighing even number of kilos; and NO in the opposite case.`,
+solution: `weight = int(input())
+if weight % 2 == 0 and weight >= 4:
+\tprint("YES")
+else:
+\tprint("NO")`
+				},
+				{
+difficulty: "easy",
+link: "https://codeforces.com/problemset/problem/71/A",
+title: "Way Too Long Words",
+content: `Sometimes some words like "localization" or "internationalization" are so long that writing them many times in one text is quite tiresome.<br><br>Let's consider a word too long, if its length is strictly more than 10 characters. All too long words should be replaced with a special abbreviation.<br><br>This abbreviation is made like this: we write down the first and the last letter of a word and between them we write the number of letters between the first and the last letters. That number is in decimal system and doesn't contain any leading zeroes.<br><br>Thus, "localization" will be spelt as "l10n", and "internationalization» will be spelt as "i18n".<br><br>You are suggested to automatize the process of changing the words with abbreviations. All too long words should be replaced by the abbreviation and the words that are not too long should not undergo any changes.`,
+input: `The first line contains an integer n (1 ≤ n ≤ 100). Each of the following n lines contains one word. All the words consist of lowercase Latin letters and possess the lengths of from 1 to 100 characters.`,
+output: `Print n lines. The i-th line should contain the result of replacing of the i-th word from the input data.`,
+solution: `# get the number of lines of input
+num = int(input())
+for i in range(num):
+\tstring = input()
+\tif len(string) <= 10:
+\t\t# if the string is less than 10 characters, we don't need to abbreviate it
+\t\tprint(string)
+\telse:
+\t\t# otherwise, we need to abbreviate it; here, we add the first character, the number of characters in between, and the last character
+\t\tprint(string[0] + str(len(string) - 2) + string[-1])`
+				},
+				{
+difficulty: "medium",
+link: "https://codeforces.com/problemset/problem/231/A",
+title: "Team",
+content: `One day three best friends Petya, Vasya and Tonya decided to form a team and take part in programming contests. Participants are usually offered several problems during programming contests. Long before the start the friends decided that they will implement a problem if at least two of them are sure about the solution. Otherwise, the friends won't write the problem's solution.<br><br>This contest offers n problems to the participants. For each problem we know, which friend is sure about the solution. Help the friends find the number of problems for which they will write a solution.`,
+input: `The first input line contains a single integer n (1 ≤ n ≤ 1000) — the number of problems in the contest. Then n lines contain three integers each, each integer is either 0 or 1. If the first number in the line equals 1, then Petya is sure about the problem's solution, otherwise he isn't sure. The second number shows Vasya's view on the solution, the third number shows Tonya's view. The numbers on the lines are separated by spaces.`,
+output: `Print a single integer — the number of problems the friends will implement on the contest.`,
+solution: `# get the number of problems
+num = int(input())
+# initialize the number of problems the friends will implement
+numProblems = 0
+for i in range(num):
+\t# get the number of friends who are sure about the solution
+\tif sum([int(x) for x in input().split()]) >= 2:
+\t\tnumProblems += 1
+print(numProblems)`
+				},
+				{
+difficulty: "medium",
+link: "https://codeforces.com/problemset/problem/158/A",
+title: "Next Round",
+content: `"Contestant who earns a score equal to or greater than the k-th place finisher's score will advance to the next round, as long as the contestant earns a positive score..." — an excerpt from contest rules.<br><br>A total of n participants took part in the contest (n ≥ k), and you already know their scores. Calculate how many participants will advance to the next round.`,
+input: `The first line of the input contains two integers n and k (1 ≤ k ≤ n ≤ 50) separated by a single space.<br><br>The second line contains n space-separated integers a1, a2, ..., an (0 ≤ ai ≤ 100), where ai is the score earned by the participant who got the i-th place. The given sequence is non-increasing (that is, for all i from 1 to n - 1 the following condition is fulfilled: ai ≥ ai + 1).`,
+output: `Output the number of participants who advance to the next round.`,
+solution: `# get the number of participants and the place of the k-th place finisher
+n, k = [int(x) for x in input().split()]
+# get the scores of the participants
+scores = [int(x) for x in input().split()]
+# initialize the number of participants who advance to the next round
+num = 0
+# iterate through the scores
+for score in scores:
+\t# if the score is greater than 0 and greater than or equal to the k-th place finisher's score, the participant advances to the next round
+\tif score > 0 and score >= scores[k - 1]:
+\t\tnum += 1
+print(num)`
+				}
+			];
+
+			for (let item of problems) {
+				const pc = document.createElement("div");
+				pc.innerHTML += `<h1><a target="_blank" href="${item["link"]}">${item["title"]}</a></h1> <span class="difficulty" style="background: ${difficultyColor(item["difficulty"])}">${item["difficulty"].toUpperCase()}</span>`;
+				pc.innerHTML += `<h2>Problem</h2> <p>${item["content"]}</p>`;
+				pc.innerHTML += `<h2>Input</h2> <p>${item["input"]}</p>`;
+				pc.innerHTML += `<h2>Output</h2> <p>${item["output"]}</p>`;
+				pc.innerHTML += `<h2>Solution</h2> <div onclick="this.nextElementSibling.style.display = 'block'; this.remove();" id="clickToShow">Click here to show solution</div> <pre style="display: none;"><code class="python">${item["solution"]}</code></pre>`;
+				container.appendChild(pc);
+			}
+
+			function difficultyColor(difficulty) {
+				switch (difficulty) {
+					case "easy":
+						return "#00ff00";
+					case "medium":
+						return "#dddd00";
+					case "hard":
+						return "#ff0000";
+				}
+			}
+
+			hljs.highlightAll();
+		</script>
+	</body>
+</html>
