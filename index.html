@@ -2,7 +2,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<title>Programming Problems</title>
+		<title>Programming problems</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
@@ -252,107 +252,8 @@ class Solution:
                 l += 1
             result[i] = sq**2
         return result
-			`
-				},
-				{
-difficulty: "easy",
-link: "https://leetcode.com/problems/maximum-average-subarray-i/description/",
-title: "643. Maximum Average Subarray I",
-content: `You are given an integer array nums consisting of n elements, and an integer k.
-
-Find a contiguous subarray whose length is equal to k that has the maximum average value and return this value. Any answer with a calculation error less than 10-5 will be accepted.
-`,
-input: `Open Leetcode`,
-output: `Return the value calculated as per the instructions.`,
-solution: `
-class Solution:
-    def findMaxAverage(self, nums: List[int], k: int) -> float:
-        
-        avg = ans = 0
-        
-        for n in range(k):
-            ans += nums[n]
-        
-        avg = ans
-        
-        for n in range(k, len(nums)):
-            avg += nums[n] - nums[n-k]
-            ans = max(ans, avg)
-        
-        return ans/k
-			`
-				},
-				{
-difficulty: "medium",
-link: "https://leetcode.com/problems/subarray-product-less-than-k/description/",
-title: "713. Subarray Product Less Than K",
-content: `Given an array of integers nums and an integer k, return the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than k.
-`,
-input: `Open Leetcode`,
-output: `Return the number of subarrays.`,
-solution: `
-class Solution:
-    def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
-        ans = l = 0
-        curr = 1
-
-        for r in range(len(nums)):
-            curr *= nums[r]
-            while l <= r and curr >= k:
-                curr //= nums[l]
-                l += 1
-            ans += r - l + 1
-        return ans
-			`
-				},
-				{
-difficulty: "medium",
-link: "https://leetcode.com/problems/max-consecutive-ones-iii/description/",
-title: "1004. Max Consecutive Ones III",
-content: `Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
-`,
-input: `Open Leetcode`,
-output: `Return the minimum number of consecutive 1s if k 0s can be flipped.`,
-solution: `
-class Solution:
-    def longestOnes(self, nums: List[int], k: int) -> int:
-        zeroes = 0
-        left = 0
-        ans = 0
-        
-        for right in range(len(nums)):
-            if nums[right] == 0:
-                zeroes += 1
-                while zeroes > k:
-                    if nums[left] == 0:
-                        zeroes -= 1
-                    left += 1
-            ans = max(ans, right-left+1)
-        
-        return ans
-			`
-				},
-				{
-difficulty: "medium",
-link: "https://leetcode.com/problems/minimum-size-subarray-sum/description/",
-title: "209. Minimum Size Subarray Sum",
-content: `Given an array of positive integers nums and a positive integer target, return the minimal length of a subarray whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
-`,
-input: `Open Leetcode`,
-output: `Return the minimum length of the subarray. Else return 0.`,
-solution: `
-class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        l = curr = 0
-        ans = len(nums)+1
-
-        for r in range(len(nums)):
-            curr += nums[r]
-            while curr >= target:
-                ans = min(ans, r-l+1)
-                curr -= nums[l]
-                l+=1
-        return ans if ans != len(nums)+1 else 0
+}
+return ans;
 			`
 				},
 			];
